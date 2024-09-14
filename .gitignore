@@ -1,0 +1,7 @@
+__pycache__
+news.db
+package-lock.json
+package.json
+scraper.log
+node_modules
+.env
