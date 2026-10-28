@@ -45,12 +45,15 @@ This project is an AI News Aggregator that scrapes news articles from various so
 
 ## Setup and Running
 
-1. Install required dependencies:
+1. Install required dependencies (Python 3.10 or newer):
    ```
    pip install -r requirements.txt
    ```
 
-2. Set up your News API key in `scraper.py`.
+2. Copy `.env.example` to `.env` and fill in:
+   - `NEWS_API_KEY` from [newsapi.org](https://newsapi.org/register)
+   - `SENDER_EMAIL` and `SENDER_PASSWORD` for the Send Email feature (for Gmail, use an
+     [app password](https://support.google.com/accounts/answer/185833))
 
 3. Run the Flask application:
    ```
