@@ -3,8 +3,11 @@ import json
 from datetime import datetime, timedelta
 import logging
 from database import get_topics, add_news_items
+from dotenv import load_dotenv
 
 import os
+
+load_dotenv()
 
 # Get the directory of the current script
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -19,9 +22,12 @@ logging.basicConfig(
     filemode='a'
 )
 
-# Initialize News API client
-# Replace 'YOUR_API_KEY' with your actual News API key
-newsapi = NewsApiClient(api_key='143b510dd7304b21981f0763eb262c0d')
+# Initialize News API client with the key from .env (NEWS_API_KEY).
+# Get a free key at https://newsapi.org/register
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
+if not NEWS_API_KEY:
+    logging.warning("NEWS_API_KEY is not set; news scraping will fail until you add it to .env")
+newsapi = NewsApiClient(api_key=NEWS_API_KEY)
 
 def scrape_news():
     topics = get_topics()
